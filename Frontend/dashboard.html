@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Smart Study Planner</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f9ff, #dceeff);
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: #0077cc;
+      margin-bottom: 15px;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .add-task {
+      margin: 20px 0;
+      text-align: right;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      background: linear-gradient(90deg, #0077cc, #00c6ff);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,118,255,0.35);
+    }
+
+    .tasks-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+    }
+
+    .tasks-table th, .tasks-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 15px;
+    }
+
+    .tasks-table th {
+      background: #0077cc;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .tasks-table tr:hover {
+      background: #f0f8ff;
+    }
+
+    .status-pending {
+      color: #ff9800;
+      font-weight: bold;
+    }
+
+    .status-completed {
+      color: #4caf50;
+      font-weight: bold;
+    }
+
+    .priority-high {
+      color: #e53935;
+      font-weight: bold;
+    }
+
+    .priority-medium {
+      color: #fb8c00;
+      font-weight: bold;
+    }
+
+    .priority-low {
+      color: #43a047;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div>Smart Study Planner</div>
+    <div>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="addtask.html">Add Task</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="login.html">Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Dashboard</h1>
+    <div class="welcome">👋 Welcome back, <strong>User!</strong></div>
+
+    <div class="add-task">
+      <button class="btn" onclick="window.location.href='addtask.html'">+ Add New Task</button>
+    </div>
+
+    <!-- Task Table -->
+    <table class="tasks-table">
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Subject</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Math Homework</td>
+          <td>Math</td>
+          <td>2025-09-25</td>
+          <td class="priority-high">High</td>
+          <td class="status-pending">Pending</td>
+          <td>
+            <button class="btn" onclick="alert('Edit Task')">✏️ Edit</button>
+            <button class="btn" onclick="alert('Delete Task')">🗑 Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Science Project</td>
+          <td>Science</td>
+          <td>2025-09-28</td>
+          <td class="priority-medium">Medium</td>
+          <td class="status-pending">Pending</td>
+          <td>
+            <button class="btn" onclick="alert('Edit Task')">✏️ Edit</button>
+            <button class="btn" onclick="alert('Delete Task')">🗑 Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>English Essay</td>
+          <td>English</td>
+          <td>2025-10-02</td>
+          <td class="priority-low">Low</td>
+          <td class="status-completed">Completed</td>
+          <td>
+            <button class="btn" onclick="alert('Edit Task')">✏️ Edit</button>
+            <button class="btn" onclick="alert('Delete Task')">🗑 Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+</html>
