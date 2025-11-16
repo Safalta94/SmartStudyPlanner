@@ -6,99 +6,35 @@
   <title>Add/Edit Task - Smart Study Planner</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #f5f9ff, #dceeff);
-      min-height: 100vh;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg, #f5f9ff, #dceeff); min-height: 100vh; }
     header {
-      background: #0077cc;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
+      background: #0077cc; color: white; padding: 15px 30px;
+      display: flex; justify-content: space-between; align-items: center; font-weight: 600;
     }
-
-    header a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-
+    header a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
     .container {
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 30px;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+      max-width: 600px; margin: 30px auto; padding: 30px; background: #fff;
+      border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.1);
     }
-
-    h1 {
-      color: #0077cc;
-      margin-bottom: 20px;
-      text-align: center;
+    h1 { color: #0077cc; margin-bottom: 20px; text-align: center; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0;
+      border-radius: 12px; font-size: 14px; outline: none; transition: 0.3s;
     }
-
-    .form-group {
-      margin-bottom: 18px;
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #0077cc; box-shadow: 0 0 8px rgba(0,119,204,0.25);
     }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      font-size: 14px;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    .form-group input:focus, 
-    .form-group select:focus, 
-    .form-group textarea:focus {
-      border-color: #0077cc;
-      box-shadow: 0 0 8px rgba(0, 119, 204, 0.25);
-    }
-
     .btn {
-      width: 100%;
-      padding: 14px;
+      width: 100%; padding: 14px;
       background: linear-gradient(90deg, #0077cc, #00c6ff);
-      border: none;
-      border-radius: 14px;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 10px;
+      border: none; border-radius: 14px; color: white;
+      font-size: 16px; font-weight: bold; cursor: pointer;
+      transition: 0.3s; margin-top: 10px;
     }
-
-    .btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 20px rgba(0,118,255,0.35);
-    }
+    .btn:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0,118,255,0.35); }
   </style>
 </head>
 <body>
@@ -110,9 +46,14 @@
       <a href="dashboard.html">Dashboard</a>
       <a href="addtask.html">Add Task</a>
       <a href="calendar.html">Calendar</a>
-      <a href="login.html">Logout</a>
+      <a href="#" onclick="logout()">Logout</a>
     </div>
   </header>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) window.location.href = "login.html";
+  </script>
 
   <!-- Main Content -->
   <div class="container">
@@ -174,13 +115,12 @@
         document.querySelector("#priority").value = editTask.priority;
         document.querySelector("#status").value = editTask.status;
         document.querySelector("#notes").value = editTask.notes;
-
         document.querySelector("#formTitle").innerText = "Edit Task";
       }
     }
 
     function saveTask(event) {
-      event.preventDefault(); // stop page refresh
+      event.preventDefault();
 
       let task = {
         taskName: document.querySelector("#taskName").value,
@@ -195,16 +135,23 @@
       let editIndex = localStorage.getItem("editIndex");
 
       if (editIndex !== null) {
-        tasks[editIndex] = task; // update
-        localStorage.removeItem("editIndex");
-        localStorage.removeItem("editTask");
+        tasks[editIndex] = task;
       } else {
-        tasks.push(task); // new
+        tasks.push(task);
       }
 
       localStorage.setItem("tasks", JSON.stringify(tasks));
+      localStorage.removeItem("editIndex");
+      localStorage.removeItem("editTask");
       window.location.href = "dashboard.html";
     }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      alert("Logged out successfully!");
+      window.location.href = "login.html";
+    }
   </script>
+
 </body>
 </html>

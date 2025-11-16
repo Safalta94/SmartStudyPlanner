@@ -3,46 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Smart Study Planner</title>
+  <title>Task List - Smart Study Planner</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
       background: linear-gradient(135deg, #f5f9ff, #dceeff);
       min-height: 100vh;
     }
+
     header {
-      background: #0077cc; color: white; padding: 15px 30px;
-      display: flex; justify-content: space-between; align-items: center; font-weight: 600;
+      background: #0077cc;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
     }
-    header a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
-    .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-    h1 { color: #0077cc; margin-bottom: 15px; }
-    .welcome { margin-bottom: 20px; font-size: 18px; font-weight: 500; color: #333; }
-    .add-task { margin: 20px 0; text-align: right; }
-    .btn {
-      padding: 8px 14px; background: linear-gradient(90deg, #0077cc, #00c6ff);
-      border: none; border-radius: 10px; color: white; cursor: pointer;
-      font-weight: bold; font-size: 14px; transition: 0.3s;
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
     }
-    .btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,118,255,0.35); }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: #0077cc;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
     .tasks-table {
-      width: 100%; border-collapse: collapse; background: #fff;
-      border-radius: 12px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
     }
-    .tasks-table th, .tasks-table td {
-      padding: 14px 16px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 15px;
+
+    .tasks-table th,
+    .tasks-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 15px;
     }
+
     .tasks-table th {
-      background: #0077cc; color: white; text-transform: uppercase;
-      font-size: 14px; letter-spacing: 0.5px;
+      background: #0077cc;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
     }
-    .tasks-table tr:hover { background: #f0f8ff; }
-    .status-pending { color: #ff9800; font-weight: bold; }
-    .status-completed { color: #4caf50; font-weight: bold; }
-    .priority-high { color: #e53935; font-weight: bold; }
-    .priority-medium { color: #fb8c00; font-weight: bold; }
-    .priority-low { color: #43a047; font-weight: bold; }
+
+    .tasks-table tr:hover {
+      background: #f0f8ff;
+    }
+
+    .priority-high {
+      color: #e53935;
+      font-weight: bold;
+    }
+
+    .priority-medium {
+      color: #fb8c00;
+      font-weight: bold;
+    }
+
+    .priority-low {
+      color: #43a047;
+      font-weight: bold;
+    }
+
+    .status-pending {
+      color: #ff9800;
+      font-weight: bold;
+    }
+
+    .status-completed {
+      color: #4caf50;
+      font-weight: bold;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      background: linear-gradient(90deg, #0077cc, #00c6ff);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 13px;
+      transition: 0.3s;
+      margin-right: 5px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 118, 255, 0.35);
+    }
+
   </style>
 </head>
 <body>
@@ -52,44 +128,46 @@
     <div>Smart Study Planner</div>
     <div>
       <a href="dashboard.html">Dashboard</a>
+      <a href="tasklist.html">Task List</a>
       <a href="addtask.html">Add Task</a>
       <a href="calendar.html">Calendar</a>
-      <a href="login.html" onclick="logout()">Logout</a>
+      <a href="#" onclick="logout()">Logout</a>
     </div>
   </header>
 
   <!-- Main Content -->
   <div class="container">
-    <h1>Dashboard</h1>
-    <div class="welcome">👋 Welcome back, <strong id="userName">User</strong>!</div>
+    <h1>📋 All Tasks</h1>
 
-    <div class="add-task">
-      <button class="btn" onclick="window.location.href='addtask.html'">+ Add New Task</button>
-    </div>
-
-    <!-- Task Table -->
     <table class="tasks-table">
       <thead>
         <tr>
+          <th>#</th>
           <th>Task Name</th>
           <th>Subject</th>
           <th>Due Date</th>
           <th>Priority</th>
           <th>Status</th>
+          <th>Notes</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody id="taskTableBody">
-        <!-- Dynamic tasks will be loaded here -->
+        <!-- Tasks will be loaded here dynamically -->
       </tbody>
     </table>
   </div>
 
   <script>
-    // Load username
+    // Redirect if user not logged in
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (user) {
-      document.getElementById("userName").innerText = user.firstName;
+    if (!user) window.location.href = "login.html";
+
+    // Logout
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      alert("Logged out successfully!");
+      window.location.href = "login.html";
     }
 
     // Load tasks
@@ -99,18 +177,20 @@
       tableBody.innerHTML = "";
 
       if (tasks.length === 0) {
-        tableBody.innerHTML = "<tr><td colspan='6' style='text-align:center;'>No tasks found.</td></tr>";
+        tableBody.innerHTML = "<tr><td colspan='8' style='text-align:center; color:#555;'>No tasks found. Add one from the Add Task page.</td></tr>";
         return;
       }
 
       tasks.forEach((task, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
+          <td>${index + 1}</td>
           <td>${task.taskName}</td>
           <td>${task.subject}</td>
           <td>${task.dueDate}</td>
           <td class="priority-${task.priority.toLowerCase()}">${task.priority}</td>
           <td class="status-${task.status.toLowerCase()}">${task.status}</td>
+          <td>${task.notes || "—"}</td>
           <td>
             <button class="btn" onclick="editTask(${index})">✏️ Edit</button>
             <button class="btn" onclick="deleteTask(${index})">🗑 Delete</button>
@@ -139,14 +219,7 @@
       }
     }
 
-    // Logout function
-    function logout() {
-      localStorage.removeItem("loggedInUser");
-      alert("Logged out successfully!");
-      window.location.href = "login.html";
-    }
-
-    // Load tasks on page load
+    // Load tasks on page start
     window.onload = loadTasks;
   </script>
 

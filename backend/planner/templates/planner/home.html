@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Study Planner</title>
+</head>
+<body>
+    <h1>Welcome to Smart Study Planner!</h1>
+
+    <!-- Show logged-in user -->
+    <p>Welcome, {{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+
+    <hr>
+
+    <!-- Pending Tasks -->
+    <h2>Pending Tasks</h2>
+    <p>Total pending: {{ pending_tasks|length }}</p>
+    <ul>
+        {% for task in pending_tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> — {{ task.due_date }}
+                <br>
+                <small>{{ task.description }}</small>
+            </li>
+        {% empty %}
+            <li>No pending tasks!</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Completed Tasks -->
+    <h2>Completed Tasks</h2>
+    <p>Total completed: {{ completed_tasks|length }}</p>
+    <ul>
+        {% for task in completed_tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> — {{ task.due_date }}
+                <em>(Done)</em>
+                <br>
+                <small>{{ task.description }}</small>
+            </li>
+        {% empty %}
+            <li>No completed tasks!</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
