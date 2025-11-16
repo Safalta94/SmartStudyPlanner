@@ -1,0 +1,73 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f6f8fc;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+   /* ===== About Section ===== */
+    .about-section {
+      padding: 80px 60px;
+      background: #f7fafc;
+      color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-text {
+      flex: 1 1 500px;
+      padding: 20px;
+    }
+
+    .about-text h1 {
+      color: #005f99;
+      margin-bottom: 20px;
+      font-size: 2.2em;
+    }
+
+    .about-text p {
+      font-size: 1.05em;
+      line-height: 1.7em;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+
+    .about-image img {
+      max-width: 85%;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== Mission Section ===== */
+    .mission {
+      background: #e6f3fa;
+      padding: 60px 80px;
+      text-align: center;
+    }
+
+    .mission h2 {
+      color: #005f99;
+      margin-bottom: 15px;
+    }
+
+    .mission p {
+      font-size: 1.05em;
+      color: #444;
+      line-height: 1.7em;
+      max-width: 800px;
+      margin: 0 auto;
+    }

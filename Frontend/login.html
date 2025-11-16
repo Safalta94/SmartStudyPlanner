@@ -4,94 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Smart Study Planner</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #f5f9ff, #dceeff);
-    }
-    .login-container {
-      background: #fff;
-      padding: 45px 40px;
-      border-radius: 20px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.1);
-      width: 400px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .logo img {
-      width: 250px;
-      margin: 10px auto 20px;
-      display: block;
-    }
-    h1 {
-      font-size: 26px;
-      font-weight: 600;
-      color: #0077cc;
-      margin-bottom: 8px;
-    }
-    p { font-size: 14px; color: #666; margin-bottom: 28px; }
-    .form-group { position: relative; margin-bottom: 22px; text-align: left; }
-    .form-group input {
-      width: 100%;
-      padding: 12px 15px 12px 42px;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      font-size: 14px;
-      outline: none;
-      transition: 0.3s;
-    }
-    .form-group input:focus {
-      border-color: #0077cc;
-      box-shadow: 0 0 8px rgba(0,119,204,0.25);
-    }
-    .form-group::before {
-      content: attr(data-icon);
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 15px;
-      color: #888;
-    }
-    .btn {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(90deg, #0077cc, #00c6ff);
-      border: none;
-      border-radius: 14px;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 20px rgba(0,118,255,0.35);
-    }
-    .forgot, .signup-link { font-size: 14px; margin-top: 15px; }
-    .signup-link a, .forgot a {
-      color: #0077cc; font-weight: 600; text-decoration: none;
-    }
-    .signup-link a:hover, .forgot a:hover { text-decoration: underline; }
-  </style>
+  <link rel="stylesheet" href="Styles/login.css">
 </head>
 <body>
+  <div id="navbar"></div>
 
-  <div class="login-container">
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
-    </div>
+  <div class="login-body">
+   <div class="login-container">
+
     <h1>Welcome Back!</h1>
     <p>Organize your classes, tasks and exams smartly.</p>
 
@@ -106,31 +26,23 @@
       <button type="submit" class="btn">Login</button>
     </form>
 
-    <p class="forgot"><a href="#">Forgot Password?</a></p>
+    <p class="forgot"><a href="forgotpassword.html">Forgot Password?</a></p>
     <p class="signup-link">Don’t have an account? <a href="signup.html">Sign Up</a></p>
   </div>
+  </div>
+
+    <div id="footer"></div>
 
   <script>
-    function login(event) {
-      event.preventDefault();
+    // Load Navbar
+    fetch('navbar1.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      // Get saved users from localStorage
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-
-      const validUser = users.find(user => user.email === email && user.password === password);
-
-      if (validUser) {
-        alert("Login successful!");
-        localStorage.setItem("loggedInUser", JSON.stringify(validUser));
-        window.location.href = "dashboard.html";
-      } else {
-        alert("Invalid email or password!");
-      }
-    }
-  </script>
-
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script> 
 </body>
 </html>

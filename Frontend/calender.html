@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar - Smart Study Planner</title>
+  <link rel="stylesheet" href="Styles/calender.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+
+  <div class="container">
+    <h2>My Study Calendar - November 2025</h2>
+
+    <div class="calendar-controls">
+      <button onclick="prevMonth()">« Previous</button>
+      <button onclick="goToday()">Today</button>
+      <button onclick="nextMonth()">Next »</button>
+    </div>
+
+    <div class="calendar-grid" id="calendar">
+      <!-- Example day cards -->
+      <div class="day-card">
+        <div class="day-number">1</div>
+        <div class="task pending">Math Chapter 3</div>
+        <div class="task done">English Practice</div>
+      </div>
+      <div class="day-card">
+        <div class="day-number">2</div>
+        <div class="task pending">Science Project</div>
+      </div>
+      <div class="day-card"><div class="day-number">3</div></div>
+      <div class="day-card"><div class="day-number">4</div></div>
+      <div class="day-card"><div class="day-number">5</div></div>
+      <div class="day-card"><div class="day-number">6</div></div>
+      <div class="day-card"><div class="day-number">7</div></div>
+      <!-- Add more cards for remaining days -->
+    </div>
+
+    <!-- Tasks for selected date -->
+    <div class="tasks-list" id="tasksForDate">
+      <h3>Tasks for November 1, 2025</h3>
+      <ul>
+        <li>Math Chapter 3 - Pending</li>
+        <li>English Practice - Done</li>
+      </ul>
+    </div>
+  </div>
+
+      <div id="footer"></div>
+<script>
+    // Load Navbar
+    fetch('navbar2.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script> 
+</body>
+</html>

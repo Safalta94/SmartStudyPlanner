@@ -4,224 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task List - Smart Study Planner</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #f5f9ff, #dceeff);
-      min-height: 100vh;
-    }
-
-    header {
-      background: #0077cc;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-    }
-
-    header a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    h1 {
-      color: #0077cc;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .tasks-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-    }
-
-    .tasks-table th,
-    .tasks-table td {
-      padding: 14px 16px;
-      text-align: left;
-      border-bottom: 1px solid #e0e0e0;
-      font-size: 15px;
-    }
-
-    .tasks-table th {
-      background: #0077cc;
-      color: white;
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-    }
-
-    .tasks-table tr:hover {
-      background: #f0f8ff;
-    }
-
-    .priority-high {
-      color: #e53935;
-      font-weight: bold;
-    }
-
-    .priority-medium {
-      color: #fb8c00;
-      font-weight: bold;
-    }
-
-    .priority-low {
-      color: #43a047;
-      font-weight: bold;
-    }
-
-    .status-pending {
-      color: #ff9800;
-      font-weight: bold;
-    }
-
-    .status-completed {
-      color: #4caf50;
-      font-weight: bold;
-    }
-
-    .btn {
-      padding: 8px 12px;
-      background: linear-gradient(90deg, #0077cc, #00c6ff);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 13px;
-      transition: 0.3s;
-      margin-right: 5px;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 118, 255, 0.35);
-    }
-
-  </style>
+  <link rel="stylesheet" href="Styles/tasklist.css">
 </head>
 <body>
+<div id="navbar"></div>
 
-  <!-- Header -->
-  <header>
-    <div>Smart Study Planner</div>
-    <div>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="tasklist.html">Task List</a>
-      <a href="addtask.html">Add Task</a>
-      <a href="calendar.html">Calendar</a>
-      <a href="#" onclick="logout()">Logout</a>
-    </div>
-  </header>
-
-  <!-- Main Content -->
+  <!-- Main Container -->
   <div class="container">
-    <h1>📋 All Tasks</h1>
+    <h2>Tasks</h2>
 
-    <table class="tasks-table">
+    <div class="top-buttons">
+      <button class="btn-schedule"></button>
+      <button class="btn-add">+ Add Task</button>
+    </div>
+
+    <!-- Task Table -->
+    <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>Task Name</th>
-          <th>Subject</th>
-          <th>Due Date</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Estimated Minutes</th>
+          <th>Deadline</th>
           <th>Priority</th>
-          <th>Status</th>
-          <th>Notes</th>
-          <th>Actions</th>
+          <th>Subject</th>
+          <th>Action</th>
         </tr>
       </thead>
-      <tbody id="taskTableBody">
-        <!-- Tasks will be loaded here dynamically -->
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Graphics</td>
+          <td>Write a program for 2D graphics in Java.</td>
+          <td>ASSIGNMENT</td>
+          <td>20</td>
+          <td>2025-08-10</td>
+          <td>7</td>
+          <td>Advance Java</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Mid term exam of MP</td>
+          <td>Revise chapter one to three.</td>
+          <td>EXAM</td>
+          <td>180</td>
+          <td>2025-08-11</td>
+          <td>9</td>
+          <td>Mobile Programming</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Types of transient communication</td>
+          <td>Read the chapter 2 of DS.</td>
+          <td>READING</td>
+          <td>50</td>
+          <td>2025-08-15</td>
+          <td>2</td>
+          <td>Distributed System</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Socket Communication Program</td>
+          <td>Client-server communication program using UDP.</td>
+          <td>OTHER</td>
+          <td>15</td>
+          <td>2025-08-09</td>
+          <td>10</td>
+          <td>Network Programming</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Numerical</td>
+          <td>Solve all the numerical of chapter one.</td>
+          <td>ASSIGNMENT</td>
+          <td>120</td>
+          <td>2025-08-09</td>
+          <td>10</td>
+          <td>Applied Economics</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 
-  <script>
-    // Redirect if user not logged in
-    const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (!user) window.location.href = "login.html";
+      <div id="footer"></div>
 
-    // Logout
-    function logout() {
-      localStorage.removeItem("loggedInUser");
-      alert("Logged out successfully!");
-      window.location.href = "login.html";
-    }
+<script>
+    // Load Navbar
+    fetch('navbar2.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
 
-    // Load tasks
-    function loadTasks() {
-      const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      const tableBody = document.getElementById("taskTableBody");
-      tableBody.innerHTML = "";
-
-      if (tasks.length === 0) {
-        tableBody.innerHTML = "<tr><td colspan='8' style='text-align:center; color:#555;'>No tasks found. Add one from the Add Task page.</td></tr>";
-        return;
-      }
-
-      tasks.forEach((task, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${index + 1}</td>
-          <td>${task.taskName}</td>
-          <td>${task.subject}</td>
-          <td>${task.dueDate}</td>
-          <td class="priority-${task.priority.toLowerCase()}">${task.priority}</td>
-          <td class="status-${task.status.toLowerCase()}">${task.status}</td>
-          <td>${task.notes || "—"}</td>
-          <td>
-            <button class="btn" onclick="editTask(${index})">✏️ Edit</button>
-            <button class="btn" onclick="deleteTask(${index})">🗑 Delete</button>
-          </td>
-        `;
-        tableBody.appendChild(row);
-      });
-    }
-
-    // Edit task
-    function editTask(index) {
-      const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      const editTask = tasks[index];
-      localStorage.setItem("editTask", JSON.stringify(editTask));
-      localStorage.setItem("editIndex", index);
-      window.location.href = "addtask.html";
-    }
-
-    // Delete task
-    function deleteTask(index) {
-      if (confirm("Are you sure you want to delete this task?")) {
-        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        tasks.splice(index, 1);
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        loadTasks();
-      }
-    }
-
-    // Load tasks on page start
-    window.onload = loadTasks;
-  </script>
-
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script> 
 </body>
 </html>

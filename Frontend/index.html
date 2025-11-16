@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Study Planner</title>
+<link rel="stylesheet" href="Styles/index.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+  <section class="hero">
+     <img src="images/BgImage.png" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index: -1; animation: slideBackground 20s infinite alternate;">
+    <h1>Prioritize Right, Study Bright</h1>
+    <p>Manage your tasks, track your achievements, and stay focused on what matters most.</p>
+    <button onclick="window.location.href='signup.html'">Plan My Study</button>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>📅 Study Schedule</h3>
+      <p>Create and view your daily or weekly study routine easily.</p>
+    </div>
+    <div class="feature-card">
+      <h3>📝 Task Management</h3>
+      <p>Add, edit, and track your study tasks efficiently.</p>
+    </div>
+    <div class="feature-card">
+      <h3>📊 Progress Tracking</h3>
+      <p>Monitor your completion rate and stay motivated.</p>
+    </div>
+    <div class="feature-card">
+      <h3>⏰ Reminders</h3>
+      <p>Get timely reminders for your important study sessions.</p>
+    </div>
+  </section>
+    <div id="footer"></div>
+    <script>
+    // Load Navbar
+    fetch('navbar1.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script> 
+</html>

@@ -1,0 +1,78 @@
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background-color:#f5f6fa; color:#333; }
+
+    /* Navbar */
+    nav {
+      display:flex; justify-content: space-between; align-items:center;
+      background:#2d89ef; padding:15px 40px; color:white;
+    }
+    nav .logo { font-size:24px; font-weight:600; }
+    nav ul { display:flex; list-style:none; }
+    nav ul li { margin:0 15px; }
+    nav ul li a { color:white; text-decoration:none; font-weight:500; transition:0.3s; }
+    nav ul li a:hover { color:#ffe57f; }
+
+    /* Container */
+    .container { max-width:1200px; margin:40px auto; padding:0 20px; }
+
+    h2 { color:#2d89ef; margin-bottom:25px; text-align:center; }
+
+    /* Table Styling */
+    table {
+      width:100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding:12px 15px;
+      text-align:left;
+      border-bottom: 1px solid #eee;
+    }
+    th { background:#2d89ef; color:white; }
+    tr:hover { background-color: #f1f5f9; }
+
+    /* Action Buttons */
+    .btn {
+      padding:5px 10px;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+      font-weight:600;
+      margin-right:5px;
+    }
+    .btn-complete { background:#5cb85c; color:white; }
+    .btn-edit { background:#f0ad4e; color:white; }
+    .btn-delete { background:#d9534f; color:white; }
+
+    /* Footer */
+    footer { background:#2d89ef; color:white; text-align:center; padding:15px; margin-top:40px; }
+
+    /* Top Buttons */
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .btn-schedule{
+      opacity: 0;
+    } 
+    .btn-add {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-add {
+      background-color: #007bff;
+    }
+    .btn-add:hover { background-color: #0069d9; }
+  
