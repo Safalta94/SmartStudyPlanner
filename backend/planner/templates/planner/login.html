@@ -1,10 +1,47 @@
-<h2>Login</h2>
-<form method="POST">
-  {% csrf_token %}
-  <label>Username:</label>
-  <input type="text" name="username"><br>
-  <label>Password:</label>
-  <input type="password" name="password"><br>
-  <button type="submit">Login</button>
-</form>
-<a href="{% url 'register' %}">Don't have an account? Register</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Smart Study Planner</title>
+  <link rel="stylesheet" href="{% static 'planner/css/login.css' %}">
+</head>
+<body>
+  <!-- Navbar include -->
+  {% include 'planner/navbar1.html' %}
+
+  <div class="login-body">
+    <div class="login-container">
+      <h1>Welcome Back!</h1>
+      <p>Organize your classes, tasks and exams smartly.</p>
+
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="form-group" data-icon="📧">
+          <input type="text" name="username" placeholder="Email Address" required>
+        </div>
+        <div class="form-group" data-icon="🔒">
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <p class="forgot"><a href="{% url 'forgot_password' %}">Forgot Password?</a></p>
+      <p class="signup-link">Don’t have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+    </div>
+  </div>
+
+  <!-- Footer include -->
+  {% include 'planner/footer.html' %}
+</body>
+</html>

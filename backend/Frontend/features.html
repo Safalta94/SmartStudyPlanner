@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features | Smart Study Planner</title>
+<link rel="stylesheet" href="Styles/features.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+
+  <!-- ✨ Features Section -->
+  <section class="features-section">
+    <h1>Explore Our Key Features</h1>
+    <p>Smart Study Planner offers powerful tools to organize, track, and improve your study routine efficiently.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Task Management">
+        <h3>📝 Task Management</h3>
+        <p>Create, edit, and organize your tasks with clear deadlines and priorities to stay focused and productive.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Calendar View">
+        <h3>📅 Calendar View</h3>
+        <p>Visualize your study schedule day by day or week by week to manage your time effectively.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Progress Tracking">
+        <h3>📊 Progress Tracking</h3>
+        <p>Monitor your completed tasks, track your productivity, and keep yourself motivated to achieve your goals.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="Reminders">
+        <h3>⏰ Smart Reminders</h3>
+        <p>Never miss a deadline again! Get alerts and reminders for upcoming exams or assignments.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Personalized Dashboard">
+        <h3>📚 Personalized Dashboard</h3>
+        <p>Get a quick overview of your tasks, deadlines, and priorities in a visually appealing dashboard.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="Data Insights">
+        <h3>💡 Study Insights</h3>
+        <p>Analyze your study habits and identify areas for improvement through data-based insights.</p>
+      </div>
+    </div>
+  </section>
+    <div id="footer"></div>
+    <script>
+    // Load Navbar
+    fetch('navbar1.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

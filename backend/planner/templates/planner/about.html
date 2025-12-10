@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Smart Study Planner</title>
+<link rel="stylesheet" href="{% static 'planner/css/about.css' %}" />
+</head>
+<body>
+<!-- Navbar include -->
+  {% include 'planner/navbar1.html' %}
+  
+  <!-- 🧠 About Section -->
+  <section class="about-section">
+    <div class="about-text">
+      <h1>About Smart Study Planner</h1>
+      <p>
+        <b>Smart Study Planner</b> is a web-based tool designed to help students plan, organize, and prioritize their study tasks effectively.  
+        It simplifies your academic life by keeping track of your assignments, deadlines, exams, and progress — all in one place.
+      </p>
+      <p>
+        Whether you're preparing for exams or managing multiple projects, Smart Study Planner helps you stay on top of your workload with personalized scheduling, 
+        task tracking, and performance insights.
+      </p>
+      <p>
+        Our goal is to help students build better study habits, manage their time wisely, and achieve academic success through structured planning.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="{% static 'planner/img/StudyPlanningIllustration.png' %}" alt="Study Planning Illustration" />
+    </div>
+  </section>
+
+  <!-- 🎯 Mission Section -->
+  <section class="mission">
+    <h2>🎯 Our Mission</h2>
+    <p>
+      To empower students with an easy-to-use digital planner that promotes productivity, discipline, and focus — 
+      enabling them to balance their studies efficiently and reach their educational goals.
+    </p>
+  </section>
+<!-- Footer include -->
+  {% include 'planner/footer.html' %}    
+</body>
+</html>

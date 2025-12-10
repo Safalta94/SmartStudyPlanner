@@ -3,18 +3,27 @@ from .models import Task
 from datetime import date
 
 class TaskSerializer(serializers.ModelSerializer):
-    # Remove 'source' here
-    status = serializers.ReadOnlyField()  
+    # Read-only field to show task status
+    status = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'due_date', 'priority', 'difficulty', 'estimated_time', 'completed', 'status']
+        # Include all fields you need in API
+        fields = [
+            'id', 'title', 'description', 'due_date', 
+            'priority', 'difficulty', 'estimated_time', 
+            'completed', 'status'
+        ]
+        read_only_fields = ['status']  # Status is computed, not editable
 
-def get_status(self, obj):
+    # Method to compute status dynamically
+    def get_status(self, obj):
         today = date.today()
-        if obj.due_date < today:
+        if obj.completed:
+            return "Completed"
+        elif obj.due_date < today:
             return "Overdue"
         elif obj.due_date == today:
             return "Due Today"
         else:
-            return "Upcoming"
+            return "Pending"

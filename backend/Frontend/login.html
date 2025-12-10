@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Smart Study Planner</title>
+  <link rel="stylesheet" href="Styles/login.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="login-body">
+   <div class="login-container">
+
+    <h1>Welcome Back!</h1>
+    <p>Organize your classes, tasks and exams smartly.</p>
+
+    <form onsubmit="login(event)">
+      <div class="form-group" data-icon="📧">
+        <input type="email" id="email" placeholder="Email Address" required>
+      </div>
+      <div class="form-group" data-icon="🔒">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <p class="forgot"><a href="forgotpassword.html">Forgot Password?</a></p>
+    <p class="signup-link">Don’t have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+  </div>
+
+    <div id="footer"></div>
+
+  <script>
+    // Load Navbar
+    fetch('navbar1.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script> 
+</body>
+</html>

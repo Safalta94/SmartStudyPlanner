@@ -1,48 +1,108 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+
 from datetime import date
-from django.http import HttpResponse
 from django.core.mail import send_mail
+
 from ..models import Task
 from ..serializers import TaskSerializer
 
 # ----------------------------
-# Home Page
+# Index / Home
 # ----------------------------
-def home(request):
-    return HttpResponse("Welcome to Smart Study Planner API")
+def index(request):
+    return render(request, 'planner/index.html')
+
+def about(request):
+    return render(request, 'planner/about.html')
+
+def calender(request):
+    return render(request, 'planner/calender.html')
+
+@login_required(login_url='login')
+def dashboard(request):
+    return render(request, 'planner/dashboard.html')
+
+def features(request):
+    return render(request, 'planner/features.html')
+
+def forgotpassword(request):
+    return render(request, 'planner/forgotpassword.html')
 
 # ----------------------------
-# Step 5 — GET Tasks (User’s Own Tasks)
+# LOGIN (Django form-based)
+# ----------------------------
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)  # Django login
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid username or password.')
+
+    return render(request, 'planner/login.html')
+
+# ----------------------------
+# LOGOUT
+# ----------------------------
+def logout_view(request):
+    auth_logout(request)
+    return redirect('login')
+
+@login_required(login_url='login')
+def profile(request):
+    return render(request, 'planner/profile.html')
+
+@login_required(login_url='login')
+def progress(request):
+    return render(request, 'planner/progress.html')
+
+def signup(request):
+    return render(request, 'planner/signup.html')
+
+@login_required(login_url='login')
+def tasklist(request):
+    return render(request, 'planner/tasklist.html')
+
+# ----------------------------
+# REST API: GET Tasks (User’s Own Tasks)
 # ----------------------------
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def tasks_list(request):
-    tasks = Task.objects.filter(user=request.user)  # Only current user's tasks
+    tasks = Task.objects.filter(user=request.user)
     serializer = TaskSerializer(tasks, many=True)
     return Response(serializer.data)
 
 # ----------------------------
-# Step 4 — Create Task
+# REST API: Create Task
 # ----------------------------
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def create_task(request):
-    data = request.data
-    serializer = TaskSerializer(data=data)
-
+    serializer = TaskSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(user=request.user)  # Attach logged-in user
+        serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # ----------------------------
-# Step 6 — Update Task
+# REST API: Update Task
 # ----------------------------
 @api_view(['PUT'])
 @authentication_classes([TokenAuthentication])
@@ -60,7 +120,7 @@ def update_task(request, task_id):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # ----------------------------
-# Step 7 — Delete Task
+# REST API: Delete Task
 # ----------------------------
 @api_view(['DELETE'])
 @authentication_classes([TokenAuthentication])
@@ -75,7 +135,7 @@ def delete_task(request, task_id):
     return Response({'message': 'Task deleted successfully'}, status=status.HTTP_200_OK)
 
 # ----------------------------
-# Personalized Study Plan
+# REST API: Personalized Study Plan
 # ----------------------------
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
@@ -83,9 +143,9 @@ def delete_task(request, task_id):
 def study_plan(request):
     tasks = Task.objects.filter(user=request.user, completed=False)
     sorted_tasks = sorted(tasks, key=lambda t: (t.due_date, t.priority, -t.difficulty))
-
-    plan_data = []
     today = date.today()
+    plan_data = []
+
     for t in sorted_tasks:
         if t.due_date == today:
             status_text = "Due Today"
@@ -107,7 +167,7 @@ def study_plan(request):
     return Response(plan_data)
 
 # ----------------------------
-# Reminders
+# REST API: Reminders
 # ----------------------------
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
@@ -115,8 +175,8 @@ def study_plan(request):
 def reminders(request):
     today = date.today()
     tasks = Task.objects.filter(user=request.user, completed=False).order_by('due_date')
-
     reminder_list = []
+
     for t in tasks:
         if t.due_date <= today:
             status_text = "Due Today" if t.due_date == today else "Overdue"
@@ -133,7 +193,7 @@ def reminders(request):
     return Response(reminder_list)
 
 # ----------------------------
-# Local Notifications
+# REST API: Local Notifications
 # ----------------------------
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
@@ -141,8 +201,8 @@ def reminders(request):
 def notifications(request):
     today = date.today()
     tasks = Task.objects.filter(user=request.user, completed=False).order_by('due_date')
-
     alerts = []
+
     for t in tasks:
         if t.due_date <= today:
             status_text = "Due Today" if t.due_date == today else "Overdue"
@@ -158,7 +218,7 @@ def notifications(request):
     })
 
 # ----------------------------
-# Email Notifications
+# REST API: Email Notifications
 # ----------------------------
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
@@ -172,7 +232,6 @@ def send_email_notifications(request):
     for t in tasks:
         if t.due_date <= today:
             status_text = "Due Today" if t.due_date == today else "Overdue"
-
             subject = f"📚 Task Alert: {t.title}"
             message = (
                 f"Hello {request.user.username},\n\n"
@@ -183,7 +242,6 @@ def send_email_notifications(request):
                 f"Please complete it as soon as possible.\n\n"
                 f"– Smart Study Planner Team"
             )
-
             from_email = "safalta_dangal@jmcampus.edu.np"
             recipient_list = ["dangalsafalta94@gmail.com"]
 

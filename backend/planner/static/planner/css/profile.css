@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #f5f6fa);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===================== NAVBAR ===================== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #2d89ef, #0077cc);
+  padding: 18px 40px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+nav .logo {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ffe57f;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ffe57f;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* ===================== CONTAINER ===================== */
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #2d89ef;
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(45, 137, 239, 0.2);
+}
+
+/* ===================== PROFILE CARD ===================== */
+.profile-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+.profile-card label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 500;
+  color: #555;
+}
+
+.profile-card input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1.5px solid #d1d5db;
+  margin-bottom: 20px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.profile-card input:focus {
+  border-color: #2d89ef;
+  box-shadow: 0 0 12px rgba(45,137,239,0.25);
+  outline: none;
+}
+
+/* ===================== BUTTON ===================== */
+.profile-card button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(90deg, #2d89ef, #00c6ff);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-card button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(45,137,239,0.35);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: linear-gradient(90deg, #2d89ef, #0077cc);
+  color: white;
+  text-align: center;
+  padding: 18px;
+  margin-top: 60px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+  font-size: 14px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  .container {
+    margin: 30px 10px;
+  }
+
+  .profile-card {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .profile-card input, .profile-card button {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Smart Study Planner</title>
+  <link rel="stylesheet" href="{% static 'planner/css/dashboard.css' %}">
+</head>
+<body>
+<!-- Navbar include -->
+  {% include 'planner/navbar2.html' %}
+  
+  <div class="container">
+    <div class="welcome">Hello, John! Here’s your dashboard for today:</div>
+
+    <div class="tasks">
+      <h3>Today's Tasks</h3>
+      <div class="task-item">
+        <span>Math - Chapter 3 Revision</span>
+        <span>🔴 High</span>
+      </div>
+      <div class="task-item">
+        <span>English - Grammar Practice</span>
+        <span>🟡 Medium</span>
+      </div>
+      <div class="task-item">
+        <span>Science - Project Work</span>
+        <span>🔴 High</span>
+      </div>
+    </div>
+
+    <div class="quick-links">
+      <a href="add_task.html">➕ Add Task</a>
+      <a href="task_list.html">📋 View Task List</a>
+      <a href="calendar.html">📅 View Calendar</a>
+      <a href="progress.html">📊 Progress</a>
+    </div>
+  </div>
+   <!-- Footer include -->
+  {% include 'planner/footer.html' %}   
+</body>
+</html>

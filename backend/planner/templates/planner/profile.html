@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Smart Study Planner</title>
+  <link rel="stylesheet" href="{% static 'planner/css/profile.css' %}">
+</head>
+<body>
+<!-- Navbar include -->
+  {% include 'planner/navbar2.html' %}
+  <div class="container">
+    <h2>My Profile</h2>
+    <div class="profile-card">
+      <form action="profile.html" method="post">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" value="John Doe" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="johndoe@example.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" value="password123" required>
+
+        <label for="profile-pic">Profile Picture (optional)</label>
+        <input type="file" id="profile-pic" name="profile-pic">
+
+        <button type="submit">Update Profile</button>
+      </form>
+    </div>
+  </div>
+
+    <!-- Footer include -->
+  {% include 'planner/footer.html' %}   
+</body>
+</html>

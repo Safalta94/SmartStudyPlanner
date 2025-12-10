@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar - Smart Study Planner</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f9ff, #dceeff);
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: #0077cc;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+    }
+
+    .day {
+      background: #f0f8ff;
+      padding: 15px;
+      border-radius: 12px;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .day-header {
+      font-weight: 600;
+      color: #0077cc;
+      margin-bottom: 8px;
+    }
+
+    .task {
+      background: linear-gradient(90deg, #0077cc, #00c6ff);
+      color: white;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div>Smart Study Planner</div>
+    <div>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="addtask.html">Add Task</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="login.html">Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>My Tasks Calendar</h1>
+
+    <div class="calendar">
+      <!-- Example Days -->
+      <div class="day">
+        <div class="day-header">Mon 23</div>
+        <div class="task">Math Homework</div>
+      </div>
+      <div class="day">
+        <div class="day-header">Tue 24</div>
+        <div class="task">Science Project</div>
+      </div>
+      <div class="day">
+        <div class="day-header">Wed 25</div>
+        <div class="task">English Essay</div>
+      </div>
+      <div class="day">
+        <div class="day-header">Thu 26</div>
+      </div>
+      <div class="day">
+        <div class="day-header">Fri 27</div>
+      </div>
+      <div class="day">
+        <div class="day-header">Sat 28</div>
+      </div>
+      <div class="day">
+        <div class="day-header">Sun 29</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

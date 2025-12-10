@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task List - Smart Study Planner</title>
+  <link rel="stylesheet" href="Styles/tasklist.css">
+</head>
+<body>
+<div id="navbar"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Tasks</h2>
+
+    <div class="top-buttons">
+      <button class="btn-schedule"></button>
+      <button class="btn-add">+ Add Task</button>
+    </div>
+
+    <!-- Task Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Estimated Minutes</th>
+          <th>Deadline</th>
+          <th>Priority</th>
+          <th>Subject</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Graphics</td>
+          <td>Write a program for 2D graphics in Java.</td>
+          <td>ASSIGNMENT</td>
+          <td>20</td>
+          <td>2025-08-10</td>
+          <td>7</td>
+          <td>Advance Java</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Mid term exam of MP</td>
+          <td>Revise chapter one to three.</td>
+          <td>EXAM</td>
+          <td>180</td>
+          <td>2025-08-11</td>
+          <td>9</td>
+          <td>Mobile Programming</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Types of transient communication</td>
+          <td>Read the chapter 2 of DS.</td>
+          <td>READING</td>
+          <td>50</td>
+          <td>2025-08-15</td>
+          <td>2</td>
+          <td>Distributed System</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Socket Communication Program</td>
+          <td>Client-server communication program using UDP.</td>
+          <td>OTHER</td>
+          <td>15</td>
+          <td>2025-08-09</td>
+          <td>10</td>
+          <td>Network Programming</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Numerical</td>
+          <td>Solve all the numerical of chapter one.</td>
+          <td>ASSIGNMENT</td>
+          <td>120</td>
+          <td>2025-08-09</td>
+          <td>10</td>
+          <td>Applied Economics</td>
+          <td>
+            <button class="btn btn-complete">Complete</button>
+            <button class="btn btn-edit">Edit</button>
+            <button class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+      <div id="footer"></div>
+
+<script>
+    // Load Navbar
+    fetch('navbar2.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script> 
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Report - Smart Study Planner</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{% static 'planner/css/progress.css' %}">
+</head>
+<body>
+<!-- Navbar include -->
+  {% include 'planner/navbar2.html' %}
+  <div class="container">
+    <h2>Progress Report</h2>
+
+    <!-- Summary Section -->
+    <div class="summary">
+      <div class="box">
+        <h3>Total Tasks</h3>
+        <p>25</p>
+      </div>
+      <div class="box">
+        <h3>Completed</h3>
+        <p>15</p>
+      </div>
+      <div class="box">
+        <h3>Pending</h3>
+        <p>10</p>
+      </div>
+    </div>
+
+    <!-- Chart Section -->
+    <canvas id="progressChart" style="background: #fff; border-radius: 12px; padding: 20px;"></canvas>
+
+    <!-- Task Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Task</th>
+          <th>Deadline</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Math</td><td>Chapter 3 Revision</td><td>2025-11-02</td><td>Done</td></tr>
+        <tr><td>English</td><td>Grammar Practice</td><td>2025-11-02</td><td>Pending</td></tr>
+        <tr><td>Science</td><td>Project Work</td><td>2025-11-03</td><td>Done</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+     <!-- Footer include -->
+  {% include 'planner/footer.html' %}   
+</body>
+</html>
